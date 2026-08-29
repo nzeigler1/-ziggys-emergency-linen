@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0f766e" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Ziggy's Driver" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <title>Ziggy's Driver</title>
+  <style>
+    :root{
+      --bg:#f7f8fa;
+      --card:#ffffff;
+      --text:#17212b;
+      --muted:#65717d;
+      --border:#e4e8ec;
+      --accent:#0f766e;
+      --accent2:#dff4f1;
+      --danger:#b42318;
+      --shadow:0 8px 26px rgba(23,33,43,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    .app{max-width:760px;margin:0 auto;padding:18px 16px 88px}
+    .topbar{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+    .eyebrow{font-size:13px;color:var(--muted)}
+    h1{font-size:28px;line-height:1.1;margin:4px 0 4px}
+    .sub{font-size:14px;color:var(--muted)}
+    .online{
+      border:1px solid var(--border);background:var(--card);border-radius:999px;
+      padding:9px 12px;font-size:13px;font-weight:600
+    }
+    .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
+    .stat{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:14px;box-shadow:var(--shadow)}
+    .stat .label{font-size:12px;color:var(--muted)}
+    .stat .value{font-size:22px;font-weight:700;margin-top:3px}
+    .tabs{display:flex;gap:8px;overflow:auto;padding-bottom:3px;margin-bottom:12px}
+    .tab{
+      border:1px solid var(--border);background:var(--card);border-radius:999px;
+      padding:11px 15px;font-weight:600;white-space:nowrap
+    }
+    .tab.active{background:var(--accent2);border-color:#b9e4dd;color:#0b5f59}
+    .order{
+      background:var(--card);border:1px solid var(--border);border-radius:20px;
+      padding:16px;margin:12px 0;box-shadow:var(--shadow)
+    }
+    .row{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+    .order-id{font-size:12px;color:var(--muted)}
+    .customer{font-size:19px;font-weight:700;margin-top:4px}
+    .address{font-size:14px;margin-top:4px}
+    .amount{font-size:17px;font-weight:700;text-align:right}
+    .status{font-size:12px;color:var(--muted);margin-top:5px;text-align:right}
+    .items{font-size:14px;color:var(--muted);margin-top:12px;line-height:1.4}
+    .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+    button,a.btn{
+      min-height:46px;border-radius:14px;border:1px solid var(--border);background:#fff;
+      font-weight:700;font-size:15px;padding:11px 12px;text-decoration:none;color:var(--text);
+      display:flex;align-items:center;justify-content:center
+    }
+    button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+    button:disabled{opacity:.55}
+    .empty{padding:28px;border:1px dashed var(--border);border-radius:18px;color:var(--muted);text-align:center;background:var(--card)}
+    .footer-card{
+      margin-top:22px;background:var(--card);border:1px solid var(--border);
+      border-radius:18px;padding:16px
+    }
+    .footer-title{font-weight:700}
+    .footer-copy{font-size:14px;color:var(--muted);margin-top:5px;line-height:1.45}
+    .install{
+      position:sticky;bottom:10px;margin-top:22px;background:rgba(255,255,255,.94);
+      backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:18px;padding:12px;
+      display:flex;justify-content:space-between;gap:12px;align-items:center;box-shadow:var(--shadow)
+    }
+    .install small{color:var(--muted);display:block;margin-top:2px}
+    .install button{min-width:115px;background:var(--accent);color:white;border-color:var(--accent)}
+    .hidden{display:none!important}
+    @media(max-width:480px){
+      .summary{grid-template-columns:1fr 1fr}
+      .summary .stat:last-child{grid-column:1/-1}
+      .actions{grid-template-columns:1fr}
+      h1{font-size:25px}
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow" id="todayLabel"></div>
+        <h1>Good day, Nick</h1>
+        <div class="sub">Driver #1 · Ziggy's Coastal Property Support</div>
+      </div>
+      <div class="online">● Online</div>
+    </div>
+
+    <section class="summary">
+      <div class="stat"><div class="label">Today</div><div class="value" id="countToday">0</div></div>
+      <div class="stat"><div class="label">Completed</div><div class="value" id="countCompleted">0</div></div>
+      <div class="stat"><div class="label">Revenue</div><div class="value" id="revenue">$0</div></div>
+    </section>
+
+    <nav class="tabs" aria-label="Delivery filters">
+      <button class="tab active" data-tab="today">Today</button>
+      <button class="tab" data-tab="upcoming">Upcoming</button>
+      <button class="tab" data-tab="completed">Completed</button>
+    </nav>
+
+    <section id="orders" aria-live="polite"></section>
+
+    <section class="footer-card">
+      <div class="footer-title">Built to grow</div>
+      <div class="footer-copy">
+        This version is locked to Driver #1. Later, the same delivery records can feed an
+        Available Jobs screen for approved drivers who claim work.
+      </div>
+    </section>
+
+    <div class="install hidden" id="installBar">
+      <div>
+        <strong>Install Ziggy's Driver</strong>
+        <small>Add it to your home screen like an app.</small>
+      </div>
+      <button id="installBtn">Install</button>
+    </div>
+  </main>
+
+<script>
+const seed = {
+  today: [
+    {id:'Z-1042',time:'9:00–11:00 AM',customer:'Ocean Breeze Rental',address:'North Myrtle Beach, SC',items:'4-bed linen package · 8 bath towels',amount:130,status:'Ready'},
+    {id:'Z-1043',time:'12:00–2:00 PM',customer:'Carolina Palms',address:'Myrtle Beach, SC',items:'2-bed linen package · Pack & Play',amount:95,status:'Ready'},
+    {id:'Z-1044',time:'3:00–5:00 PM',customer:'Beach Haven',address:'Surfside Beach, SC',items:'Beach bundle · 4 chairs · cart · towels',amount:140,status:'Ready'}
+  ],
+  upcoming: [
+    {id:'Z-1045',time:'Tomorrow · 10:00 AM',customer:'Seaside Cottage',address:'North Myrtle Beach, SC',items:'6-bed linen package',amount:180,status:'Scheduled'},
+    {id:'Z-1046',time:'Sunday · 1:00 PM',customer:'Coastal Escape',address:'Myrtle Beach, SC',items:'3-bed linen package · comforter',amount:120,status:'Scheduled'}
+  ],
+  completed: []
+};
+
+const STORAGE_KEY = 'ziggys-driver-orders-v1';
+let state = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') || seed;
+let active = 'today';
+
+function persist(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+function money(n){ return '$' + Number(n).toFixed(0); }
+
+function stats(){
+  document.getElementById('countToday').textContent = state.today.length;
+  document.getElementById('countCompleted').textContent = state.completed.length;
+  const rev = [...state.today,...state.upcoming,...state.completed].reduce((s,o)=>s+Number(o.amount||0),0);
+  document.getElementById('revenue').textContent = money(rev);
+}
+
+function primaryLabel(status){
+  if(status==='Ready') return 'Mark Picked Up';
+  if(status==='Picked Up') return 'Mark Delivered';
+  if(status==='Scheduled') return 'Scheduled';
+  return 'Delivered';
+}
+
+function render(){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active', b.dataset.tab===active));
+  const target = document.getElementById('orders');
+  const orders = state[active];
+  if(!orders.length){
+    target.innerHTML = '<div class="empty">No deliveries here yet.</div>';
+    stats();
+    return;
+  }
+  target.innerHTML = orders.map((o,i)=>`
+    <article class="order">
+      <div class="row">
+        <div>
+          <div class="order-id">${o.id} · ${o.time}</div>
+          <div class="customer">${o.customer}</div>
+          <div class="address">${o.address}</div>
+        </div>
+        <div>
+          <div class="amount">${money(o.amount)}</div>
+          <div class="status">${o.status}</div>
+        </div>
+      </div>
+      <div class="items">${o.items}</div>
+      <div class="actions">
+        <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(o.address)}">Navigate</a>
+        <button class="primary statusBtn" data-index="${i}" ${o.status==='Scheduled' ? 'disabled' : ''}>${primaryLabel(o.status)}</button>
+      </div>
+    </article>
+  `).join('');
+
+  document.querySelectorAll('.statusBtn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const i = Number(btn.dataset.index);
+      const o = state[active][i];
+      if(!o) return;
+      if(o.status==='Ready'){
+        o.status='Picked Up';
+      } else if(o.status==='Picked Up'){
+        o.status='Delivered';
+        state[active].splice(i,1);
+        state.completed.unshift(o);
+      }
+      persist();
+      render();
+    });
+  });
+
+  stats();
+}
+
+document.querySelectorAll('.tab').forEach(btn=>{
+  btn.addEventListener('click', ()=>{ active = btn.dataset.tab; render(); });
+});
+
+const now = new Date();
+document.getElementById('todayLabel').textContent = now.toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
+
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', (e)=>{
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('installBar').classList.remove('hidden');
+});
+document.getElementById('installBtn').addEventListener('click', async ()=>{
+  if(!deferredPrompt) return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  document.getElementById('installBar').classList.add('hidden');
+});
+
+if('serviceWorker' in navigator){
+  window.addEventListener('load', ()=>navigator.serviceWorker.register('./sw.js'));
+}
+
+render();
+</script>
+</body>
+</html>
