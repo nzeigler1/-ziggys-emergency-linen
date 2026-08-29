@@ -1,223 +1,42 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ziggy's Emergency Linen Delivery</title>
-  <style>
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f7f8fa;color:#18212b}
-    .hero{background:linear-gradient(135deg,#0c5d73,#1190aa);color:#fff;padding:28px 20px 32px}
-    .hero-inner{max-width:820px;margin:0 auto}
-    .eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;opacity:.9}
-    h1{font-size:34px;line-height:1.05;margin:8px 0 10px}
-    .sub{font-size:16px;line-height:1.5;max-width:650px;margin:0;opacity:.96}
-    .rush{display:inline-block;margin-top:14px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);padding:9px 12px;border-radius:999px;font-size:13px;font-weight:800}
-    .wrap{max-width:820px;margin:0 auto;padding:18px}
-    .card{background:#fff;border:1px solid #dde4ea;border-radius:18px;padding:18px;margin-bottom:15px}
-    h2{font-size:19px;margin:0 0 14px}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    label{display:block;font-size:13px;font-weight:800;margin-bottom:6px}
-    input,select,textarea{width:100%;border:1px solid #cbd6df;background:#fff;border-radius:11px;padding:12px;font-size:16px;min-height:46px}
-    textarea{min-height:90px;resize:vertical}
-    .item{display:grid;grid-template-columns:1fr 100px;gap:12px;align-items:center;border:1px solid #dde5eb;border-radius:13px;padding:12px;margin-bottom:9px}
-    .item strong{display:block;font-size:15px}
-    .item small{color:#667481;display:block;margin-top:3px}
-    .qty{display:flex;align-items:center;gap:8px}
-    .qty button{width:36px;height:36px;border:1px solid #cbd6df;background:#f8fafb;border-radius:9px;font-size:20px;cursor:pointer}
-    .qty input{min-height:36px;text-align:center;padding:6px}
-    .speed{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .speed label{border:1px solid #d8e1e8;border-radius:13px;padding:12px;cursor:pointer}
-    .speed input{width:auto;min-height:0;margin-right:8px}
-    .summary{background:#eef8fb;border:1px solid #c9e7ef;border-radius:15px;padding:15px;margin-top:14px}
-    .row{display:flex;justify-content:space-between;gap:12px;padding:6px 0;font-size:14px}
-    .total{font-size:22px;font-weight:900;border-top:1px solid #c9e7ef;margin-top:8px;padding-top:12px}
-    .pay{width:100%;border:0;border-radius:13px;background:#0c6f88;color:#fff;padding:15px;font-size:17px;font-weight:900;cursor:pointer;margin-top:14px}
-    .note{font-size:12px;color:#697987;text-align:center;line-height:1.45;margin-top:9px}
-    .success{display:none;margin-top:12px;padding:13px;border-radius:12px;background:#eef9f1;border:1px solid #cce8d3}
-    .warn{background:#fff7e8;border:1px solid #f0ddad;border-radius:14px;padding:13px;font-size:13px;line-height:1.45;margin-bottom:15px}
-    @media(max-width:600px){.grid,.speed{grid-template-columns:1fr}.item{grid-template-columns:1fr}.qty{justify-content:flex-start}h1{font-size:29px}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Beach Door Linens Co.</title>
+<style>
+:root{--navy:#0b2f55;--blue:#0f83f3;--sky:#eef8ff;--ink:#15314c;--line:#d4e2ec;--gold:#f5c65b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff}a{color:inherit}
+.topbar{background:var(--navy);color:#fff;padding:9px 20px;font-size:13px;font-weight:700}.topbar-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.nav{background:#fff;border-bottom:1px solid #edf1f4;position:sticky;top:0;z-index:20}.nav-inner{max-width:1200px;margin:auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none}.door{width:40px;height:54px;border:3px solid var(--navy);border-radius:20px 20px 2px 2px;position:relative}.door:after{content:'';width:5px;height:5px;background:var(--navy);border-radius:50%;position:absolute;right:7px;top:25px}.brand-text{font-family:Georgia,serif;color:var(--navy);font-size:28px;letter-spacing:.08em;line-height:.95}.brand-text small{display:block;font-family:Arial;font-size:11px;letter-spacing:.32em;margin-top:7px;text-align:center}.navlinks{display:flex;gap:24px;align-items:center;font-weight:700;font-size:14px}.navlinks a{text-decoration:none}.btn{display:inline-block;background:var(--navy);color:#fff;text-decoration:none;border:0;border-radius:12px;padding:13px 20px;font-weight:800;cursor:pointer}
+.hero{display:grid;grid-template-columns:1fr 1.15fr;min-height:490px;background:#fafdff}.hero-copy{padding:62px max(30px,calc((100vw - 1200px)/2));padding-right:45px;display:flex;flex-direction:column;justify-content:center}.kicker{color:#2b8be6;font-weight:900;letter-spacing:.14em;font-size:14px}h1{font-family:Georgia,serif;font-size:58px;line-height:1.02;color:var(--navy);margin:14px 0 18px}.script{display:block;color:#1475d4;font-family:cursive;font-size:56px;font-weight:500}.hero-copy p{font-size:18px;line-height:1.55;max-width:560px}.hero-img{background-image:linear-gradient(90deg,rgba(255,255,255,.18),rgba(255,255,255,0)),url('https://images.unsplash.com/photo-1770414173168-f6c666501225?auto=format&fit=crop&fm=jpg&q=82&w=1800');background-size:cover;background-position:center;min-height:490px}.benefits{display:flex;gap:28px;flex-wrap:wrap;margin-top:28px;font-weight:700}.benefits span{display:flex;gap:8px;align-items:center}.benefits b{font-size:24px;color:#1578d3}
+.section{padding:52px 20px}.section.blue{background:linear-gradient(#f6fbff,#ecf7ff)}.container{max-width:1200px;margin:auto}.section-title{text-align:center}.section-title .kicker{font-size:13px}.section-title h2{font-family:Georgia,serif;color:var(--navy);font-size:42px;margin:8px 0 12px}.included{max-width:720px;margin:0 auto 25px;background:#fff;border:1px solid #cddce7;border-radius:14px;padding:14px 18px;text-align:center;font-size:16px;line-height:1.45}
+.packages{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.pkg{background:#fff;border:2px solid var(--line);border-radius:16px;padding:20px 12px;text-align:center;cursor:pointer;position:relative;transition:.15s}.pkg:hover,.pkg.selected{border-color:#1478d4;transform:translateY(-2px)}.pkg input{position:absolute;opacity:0}.pkg-name{font-weight:900;font-size:15px}.pkg-price{font-size:38px;color:#0b87f6;font-weight:900;margin:12px 0}.selectbtn{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:10px;font-weight:900}.popular{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#1d7bd2;color:#fff;font-size:11px;font-weight:900;border-radius:999px;padding:5px 10px;white-space:nowrap}.washing{max-width:820px;margin:22px auto 0;background:#fff8e8;border:1px solid #f0cc71;border-radius:14px;padding:14px 18px;text-align:center}
+.booking{display:grid;grid-template-columns:1fr 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:28px}.field label{font-size:13px;font-weight:900;display:block;margin-bottom:6px}input,select,textarea{width:100%;border:1px solid #c9d7e1;border-radius:10px;padding:12px;font-size:16px;background:#fff}textarea{min-height:90px;resize:vertical}.full{grid-column:1/-1}.speed{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.speed label{border:1px solid var(--line);border-radius:10px;padding:11px;font-weight:700}.speed input{width:auto;margin-right:8px}.summary{background:#eef8ff;border:1px solid #c5e2f5;border-radius:14px;padding:15px}.row{display:flex;justify-content:space-between;padding:6px 0}.grand{font-size:22px;font-weight:900;border-top:1px solid #bfd8e8;margin-top:6px;padding-top:12px}.pay{width:100%;background:var(--navy);color:#fff;border:0;border-radius:12px;padding:15px;font-size:17px;font-weight:900;cursor:pointer}.note{text-align:center;font-size:12px;color:#66798a;margin-top:8px}#status{display:none;padding:12px;border-radius:10px;margin-top:10px}
+footer{background:var(--navy);color:#fff;padding:28px 20px;text-align:center}
+@media(max-width:900px){.navlinks{display:none}.hero{grid-template-columns:1fr}.hero-copy{padding:44px 24px}.hero-img{min-height:340px}h1{font-size:44px}.script{font-size:44px}.packages{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.packages{grid-template-columns:repeat(2,1fr)}.booking{grid-template-columns:1fr}.full{grid-column:1}.speed{grid-template-columns:1fr}.section-title h2{font-size:34px}.topbar-inner{justify-content:center}}
+</style>
 </head>
 <body>
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="eyebrow">Ziggy's Coastal Property Support</div>
-      <h1>Emergency Linen Delivery</h1>
-      <p class="sub">Missing sheets? Cleaner short on towels? Guests arriving today? Order what you need and choose same-day, rush, or after-hours delivery.</p>
-      <div class="rush">Myrtle Beach • North Myrtle Beach • Conway</div>
-    </div>
-  </section>
-
-  <main class="wrap">
-    <div class="warn"><strong>For urgent turnover needs.</strong> Pricing shown is a starting model and should be adjusted once your real linen, fuel, and laundry costs are confirmed.</div>
-
-    <form id="orderForm">
-      <section class="card">
-        <h2>Customer & property</h2>
-        <div class="grid">
-          <div><label for="name">Customer name</label><input id="name" required placeholder="Your name"></div>
-          <div><label for="phone">Phone number</label><input id="phone" required inputmode="tel" placeholder="(843) 555-0123"></div>
-          <div><label for="email">Email</label><input id="email" type="email" placeholder="you@example.com"></div>
-          <div><label for="role">You are a...</label><select id="role"><option>Vacation rental owner</option><option>Property manager</option><option>Cleaner</option><option>Guest</option><option>Other</option></select></div>
-          <div style="grid-column:1/-1"><label for="address">Delivery address / resort / unit</label><input id="address" required placeholder="Property address, building and unit"></div>
-          <div><label for="date">Delivery date</label><input id="date" required type="date"></div>
-          <div><label for="time">Needed by</label><input id="time" required type="time"></div>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2>Bed linen sets</h2>
-        <div class="item">
-          <div><strong>King complete set — $39</strong><small>Fitted sheet, flat sheet, 2 pillowcases</small></div>
-          <div class="qty"><button type="button" data-action="minus" data-target="king">−</button><input id="king" data-price="39" type="number" min="0" max="20" value="0"><button type="button" data-action="plus" data-target="king">+</button></div>
-        </div>
-        <div class="item">
-          <div><strong>Queen complete set — $35</strong><small>Fitted sheet, flat sheet, 2 pillowcases</small></div>
-          <div class="qty"><button type="button" data-action="minus" data-target="queen">−</button><input id="queen" data-price="35" type="number" min="0" max="20" value="0"><button type="button" data-action="plus" data-target="queen">+</button></div>
-        </div>
-        <div class="item">
-          <div><strong>Full complete set — $32</strong><small>Fitted sheet, flat sheet, 2 pillowcases</small></div>
-          <div class="qty"><button type="button" data-action="minus" data-target="full">−</button><input id="full" data-price="32" type="number" min="0" max="20" value="0"><button type="button" data-action="plus" data-target="full">+</button></div>
-        </div>
-        <div class="item">
-          <div><strong>Twin complete set — $25</strong><small>Fitted sheet, flat sheet, pillowcase</small></div>
-          <div class="qty"><button type="button" data-action="minus" data-target="twin">−</button><input id="twin" data-price="25" type="number" min="0" max="30" value="0"><button type="button" data-action="plus" data-target="twin">+</button></div>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2>Towels & extras</h2>
-        <div class="item">
-          <div><strong>Bathroom towel bundle — $35</strong><small>Bath towels, hand towels and washcloths</small></div>
-          <div class="qty"><button type="button" data-action="minus" data-target="bath">−</button><input id="bath" data-price="35" type="number" min="0" max="20" value="0"><button type="button" data-action="plus" data-target="bath">+</button></div>
-        </div>
-        <div class="item">
-          <div><strong>Towel set per person — $12</strong><small>1 bath towel, 1 hand towel, 1 washcloth</small></div>
-          <div class="qty"><button type="button" data-action="minus" data-target="person">−</button><input id="person" data-price="12" type="number" min="0" max="30" value="0"><button type="button" data-action="plus" data-target="person">+</button></div>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2>Delivery speed</h2>
-        <div class="speed">
-          <label><input type="radio" name="speed" value="35" checked>Same-day <strong>+$35</strong></label>
-          <label><input type="radio" name="speed" value="60">60–90 min rush <strong>+$60</strong></label>
-          <label><input type="radio" name="speed" value="85">After-hours rush <strong>+$85</strong></label>
-          <label><input type="radio" name="speed" value="0">Scheduled next-day <strong>+$0</strong></label>
-        </div>
-        <div style="margin-top:14px">
-          <label for="notes">Delivery instructions</label>
-          <textarea id="notes" placeholder="Gate code, front desk instructions, cleaner contact, parking info, etc."></textarea>
-        </div>
-
-        <div class="summary" aria-live="polite">
-          <div class="row"><span>Linens & towels</span><strong id="itemsTotal">$0.00</strong></div>
-          <div class="row"><span>Delivery</span><strong id="deliveryTotal">$35.00</strong></div>
-          <div class="row total"><span>Total</span><span id="grandTotal">$35.00</span></div>
-        </div>
-
-        <button class="pay" type="submit">Continue to Secure Payment</button>
-        <div class="note">Secure payment is processed by Stripe. Card details are entered on Stripe's checkout page.</div>
-        <div id="success" class="success" role="status"></div>
-      </section>
-    </form>
-  </main>
-
-  <script>
-    const form = document.getElementById('orderForm');
-    const qtyInputs = [...document.querySelectorAll('input[type="number"][data-price]')];
-    const money = n => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(n);
-
-    function clampInput(el){
-      let val = Number(el.value || 0);
-      const min = Number(el.min || 0), max = Number(el.max || 999);
-      if(!Number.isFinite(val)) val = 0;
-      val = Math.max(min, Math.min(max, Math.round(val)));
-      el.value = val;
-      return val;
-    }
-
-    function update(){
-      let items = 0;
-      qtyInputs.forEach(el => items += clampInput(el) * Number(el.dataset.price || 0));
-      const speed = document.querySelector('input[name="speed"]:checked');
-      const delivery = speed ? Number(speed.value) : 0;
-      document.getElementById('itemsTotal').textContent = money(items);
-      document.getElementById('deliveryTotal').textContent = money(delivery);
-      document.getElementById('grandTotal').textContent = money(items + delivery);
-    }
-
-    document.querySelectorAll('[data-action]').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        const el = document.getElementById(btn.dataset.target);
-        const delta = btn.dataset.action === 'plus' ? 1 : -1;
-        el.value = clampInput(el) + delta;
-        clampInput(el);
-        update();
-      });
-    });
-
-    qtyInputs.forEach(el=>el.addEventListener('input', update));
-    document.querySelectorAll('input[name="speed"]').forEach(el=>el.addEventListener('change', update));
-
-    form.addEventListener('submit', async e=>{
-      e.preventDefault();
-      if(!form.reportValidity()) return;
-
-      const quantities = {};
-      qtyInputs.forEach(el => quantities[el.id] = clampInput(el));
-
-      const itemCount = Object.values(quantities).reduce((sum,n)=>sum+n,0);
-      if(itemCount === 0){
-        alert('Please add at least one linen or towel item.');
-        return;
-      }
-
-      const speed = document.querySelector('input[name="speed"]:checked');
-      const speedMap = {'35':'same_day','60':'rush','85':'after_hours','0':'next_day'};
-
-      const payload = {
-        quantities,
-        delivery: speedMap[speed ? speed.value : '35'] || 'same_day',
-        name: document.getElementById('name').value,
-        phone: document.getElementById('phone').value,
-        email: document.getElementById('email').value,
-        role: document.getElementById('role').value,
-        address: document.getElementById('address').value,
-        date: document.getElementById('date').value,
-        time: document.getElementById('time').value,
-        notes: document.getElementById('notes').value
-      };
-
-      const button = form.querySelector('.pay');
-      const box = document.getElementById('success');
-      button.disabled = true;
-      button.textContent = 'Opening secure checkout...';
-      box.style.display = 'none';
-
-      try{
-        const resp = await fetch('/api/checkout', {
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body:JSON.stringify(payload)
-        });
-        const data = await resp.json();
-        if(!resp.ok || !data.url) throw new Error(data.error || 'Unable to start checkout.');
-        window.location.href = data.url;
-      }catch(err){
-        box.textContent = err.message || 'Unable to start checkout.';
-        box.style.display = 'block';
-        box.style.background = '#fff1f0';
-        box.style.borderColor = '#f0b8b3';
-        box.style.color = '#8a2d27';
-        box.scrollIntoView({behavior:'smooth',block:'nearest'});
-        button.disabled = false;
-        button.textContent = 'Continue to Secure Payment';
-      }
-    });
-
-    update();
-  </script>
-</body>
-</html>
+<div class="topbar"><div class="topbar-inner"><span>⌖ Proudly serving Myrtle Beach, North Myrtle Beach & Conway</span><span>✓ Fresh. Clean. On Time. Every Time.</span></div></div>
+<nav class="nav"><div class="nav-inner"><a class="brand" href="#top"><span class="door"></span><span class="brand-text">BEACH DOOR<small>LINENS CO.</small></span></a><div class="navlinks"><a href="#top">Home</a><a href="#packages">Our Services</a><a href="#packages">Packages</a><a href="#book">Contact</a></div><a class="btn" href="#packages">BOOK NOW</a></div></nav>
+<section class="hero" id="top"><div class="hero-copy"><div class="kicker">LINEN DELIVERY FOR VACATION RENTALS</div><h1>Fresh Linens.<br>Delivered to <span class="script">Your Door.</span></h1><p>Make turnovers simple with clean, hotel-quality bed linens and towels delivered when you need them.</p><div class="benefits"><span><b>◷</b>On-Time Delivery</span><span><b>✦</b>Quality Linens</span><span><b>♡</b>Local & Reliable</span></div><div style="margin-top:28px"><a class="btn" href="#packages">Book Your Linens</a></div></div><div class="hero-img" role="img" aria-label="Bright coastal bedroom with fresh white linens"></div></section>
+<section class="section blue" id="packages"><div class="container"><div class="section-title"><div class="kicker">BOOK YOUR SERVICE</div><h2>Choose Your Bed Package</h2></div><div class="included"><strong>Every bed package includes:</strong> fitted sheet, flat sheet, 2 pillowcases, 2 bath towels, 2 washcloths and 1 hand towel <strong>per bed</strong>.</div><div class="packages">
+<label class="pkg selected"><input type="radio" name="beds" value="1" data-price="60" checked><div class="pkg-name">1 BED</div><div class="pkg-price">$60</div><span class="selectbtn">SELECT</span></label>
+<label class="pkg"><input type="radio" name="beds" value="2" data-price="85"><div class="pkg-name">2 BEDS</div><div class="pkg-price">$85</div><span class="selectbtn">SELECT</span></label>
+<label class="pkg"><input type="radio" name="beds" value="3" data-price="105"><div class="pkg-name">3 BEDS</div><div class="pkg-price">$105</div><span class="selectbtn">SELECT</span></label>
+<label class="pkg"><span class="popular">MOST POPULAR</span><input type="radio" name="beds" value="4" data-price="130"><div class="pkg-name">4 BEDS</div><div class="pkg-price">$130</div><span class="selectbtn">SELECT</span></label>
+<label class="pkg"><input type="radio" name="beds" value="5" data-price="155"><div class="pkg-name">5 BEDS</div><div class="pkg-price">$155</div><span class="selectbtn">SELECT</span></label>
+<label class="pkg"><input type="radio" name="beds" value="6" data-price="180"><div class="pkg-name">6 BEDS</div><div class="pkg-price">$180</div><span class="selectbtn">SELECT</span></label>
+</div><div class="washing"><strong>Have your own linens?</strong> Washing service is available upon request.</div>
+<form id="orderForm" class="booking"><div class="field"><label>Customer name</label><input id="name" required placeholder="Your name"></div><div class="field"><label>Phone number</label><input id="phone" required inputmode="tel" placeholder="(843) 555-0123"></div><div class="field"><label>Email</label><input id="email" type="email" placeholder="you@example.com"></div><div class="field"><label>You are a...</label><select id="role"><option>Vacation rental owner</option><option>Property manager</option><option>Cleaner</option><option>Guest</option><option>Other</option></select></div><div class="field full"><label>Delivery address / resort / unit</label><input id="address" required placeholder="Property address, building and unit"></div><div class="field"><label>Delivery date</label><input id="date" type="date" required></div><div class="field"><label>Needed by</label><input id="time" type="time" required></div><div class="field full"><label>Delivery speed</label><div class="speed"><label><input type="radio" name="speed" value="35" checked>Same-day +$35</label><label><input type="radio" name="speed" value="60">60–90 min rush +$60</label><label><input type="radio" name="speed" value="85">After-hours rush +$85</label><label><input type="radio" name="speed" value="0">Scheduled next-day +$0</label></div></div><div class="field full"><label>Delivery instructions</label><textarea id="notes" placeholder="Gate code, cleaner contact, parking info, etc."></textarea></div><div class="full summary"><div class="row"><span>Bed package</span><strong id="packageTotal">$60.00</strong></div><div class="row"><span>Delivery</span><strong id="deliveryTotal">$35.00</strong></div><div class="row grand"><span>Total</span><span id="grandTotal">$95.00</span></div></div><div class="full"><button class="pay" type="submit">Continue to Secure Payment</button><div class="note">Secure checkout is processed by Stripe.</div><div id="status"></div></div></form>
+</div></section>
+<footer>© Beach Door Linens Co. • Myrtle Beach area linen delivery</footer>
+<script>
+const money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(n);const form=document.getElementById('orderForm');
+function selectedBeds(){return document.querySelector('input[name="beds"]:checked')}function update(){document.querySelectorAll('.pkg').forEach(p=>p.classList.toggle('selected',!!p.querySelector('input:checked')));const b=selectedBeds();const s=document.querySelector('input[name="speed"]:checked');const p=Number(b?.dataset.price||0),d=Number(s?.value||0);packageTotal.textContent=money(p);deliveryTotal.textContent=money(d);grandTotal.textContent=money(p+d)}
+document.querySelectorAll('input[name="beds"],input[name="speed"]').forEach(el=>el.addEventListener('change',()=>{update();if(el.name==='beds')document.getElementById('orderForm').scrollIntoView({behavior:'smooth',block:'start'})}));
+form.addEventListener('submit',async e=>{e.preventDefault();if(!form.reportValidity())return;const beds=selectedBeds();const speed=document.querySelector('input[name="speed"]:checked');const speedMap={'35':'same_day','60':'rush','85':'after_hours','0':'next_day'};const payload={beds:Number(beds.value),delivery:speedMap[speed.value],name:name.value,phone:phone.value,email:email.value,role:role.value,address:address.value,date:date.value,time:time.value,notes:notes.value};const button=form.querySelector('.pay'),box=document.getElementById('status');button.disabled=true;button.textContent='Opening secure checkout...';box.style.display='none';try{const r=await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const data=await r.json();if(!r.ok||!data.url)throw new Error(data.error||'Unable to start checkout.');location.href=data.url}catch(err){box.textContent=err.message||'Unable to start checkout.';box.style.display='block';box.style.background='#fff1f0';box.style.color='#8a2d27';button.disabled=false;button.textContent='Continue to Secure Payment'}});update();
+</script>
+</body></html>
